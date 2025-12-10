@@ -10,7 +10,7 @@ spring:
       server:
         git:
           uri: https://github.com/Thareesha98/config-repo.git
-          default-label: develop
+          default-label: test
           clone-on-start: true
 
 management:
