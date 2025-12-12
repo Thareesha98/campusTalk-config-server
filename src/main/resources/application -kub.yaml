@@ -11,7 +11,7 @@ spring:
         git:
           uri: https://github.com/Thareesha98/config-repo.git
           default-label: test
-          clone-on-start: true
+          clone-on-start: false
 
 management:
   endpoints:
