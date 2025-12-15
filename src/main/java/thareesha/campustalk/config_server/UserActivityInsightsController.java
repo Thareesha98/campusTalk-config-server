@@ -1,33 +1,26 @@
-package com.example.analytics.api;
+package com.example.analytics.service;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.analytics.api.UserActivityInsightsController;
+import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * REST Controller for retrieving user activity data and analytics insights.
- * This class is designed to simulate a production data retrieval endpoint 
- * and is self-contained without dependencies on other project files.
+ * Service layer component containing the business logic for fetching user activity data.
+ * In a real application, this layer would call a Repository or an external API.
  */
-@RestController
-@RequestMapping("/v1/analytics/user-activity")
-public class UserActivityInsightsController {
+@Service
+public class UserActivityService {
 
-    /**
-     * Data Transfer Object (DTO) for structured weekly activity.
-     */
-    private record WeeklyActivity(
+    // Define the DTO records here or in a separate 'model' package for best practice
+    // Keeping them here for the "single class" file output, but using the fully 
+    // qualified name in the Controller for true separation.
+    public record WeeklyActivity(
         LocalDate weekStarting,
         int interactionCount
     ) {}
 
-    /**
-     * Data Transfer Object (DTO) for user activity summary and insights.
-     */
-    private record UserInsights(
+    public record UserInsights(
         String userId,
         String status,
         Integer totalInteractionsLastYear,
@@ -36,17 +29,15 @@ public class UserActivityInsightsController {
         List<WeeklyActivity> activityTrend
     ) {}
 
-
     /**
-     * Endpoint to get structured activity insights for a specific user ID.
-     * The parameter is genericized to 'userId' for realism.
-     * * @param userId The identifier for the user (simulated GitHub username).
-     * @return A structured UserInsights DTO containing simulated data.
+     * Retrieves structured activity insights for a user ID.
+     * This method contains the simulated data generation/retrieval logic.
+     * * @param userId The identifier for the user.
+     * @return UserInsights DTO.
      */
-    @GetMapping("/{userId}/insights")
-    public UserInsights getUserActivityInsights(@PathVariable String userId) {
+    public UserInsights fetchInsightsByUserId(String userId) {
         
-        // --- Simulated Logic / Data Retrieval ---
+        // --- Simulated Data Retrieval/Business Logic ---
         
         if ("unknownuser".equalsIgnoreCase(userId)) {
             return new UserInsights(
@@ -68,7 +59,7 @@ public class UserActivityInsightsController {
         // Simulated Summary Statistics
         int totalInteractions = 1540;
         int averageInteractions = 29;
-        int successfulOutcomes = 120; // Simulated closed issues/merged PRs
+        int successfulOutcomes = 120;
 
         return new UserInsights(
             userId,
