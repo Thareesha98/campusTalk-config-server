@@ -1,20 +1,18 @@
 package com.example.analytics.service;
 
-import com.example.analytics.api.UserActivityInsightsController;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Service layer component containing the business logic for fetching user activity data.
- * In a real application, this layer would call a Repository or an external API.
+ * Service component containing the business logic for fetching user activity data.
+ * This class would typically orchestrate calls to the data access layer (Repository).
  */
 @Service
 public class UserActivityService {
 
-    // Define the DTO records here or in a separate 'model' package for best practice
-    // Keeping them here for the "single class" file output, but using the fully 
-    // qualified name in the Controller for true separation.
+    // --- Public DTO Records (often placed in a separate 'model' or 'dto' package) ---
+    
     public record WeeklyActivity(
         LocalDate weekStarting,
         int interactionCount
@@ -31,9 +29,8 @@ public class UserActivityService {
 
     /**
      * Retrieves structured activity insights for a user ID.
-     * This method contains the simulated data generation/retrieval logic.
      * * @param userId The identifier for the user.
-     * @return UserInsights DTO.
+     * @return UserInsights DTO containing simulated data.
      */
     public UserInsights fetchInsightsByUserId(String userId) {
         
