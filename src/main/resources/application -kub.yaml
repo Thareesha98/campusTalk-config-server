@@ -1,20 +1,28 @@
 server:
+  # The port the Config Server will run on
   port: 8888
 
 spring:
   application:
+    # The name used when registering the service, often used by clients
     name: config-server
 
   cloud:
     config:
       server:
         git:
+          # URL of the Git repository where all configuration files are stored
           uri: https://github.com/Thareesha98/config-repo.git
+          # The default branch/label to look for configurations
           default-label: test
-          clone-on-start: false
+          # Set to 'true' to ensure the repository is cloned when the server starts.
+          # (Changed from 'false' to 'true' for most straightforward initial setup)
+          clone-on-start: true 
 
+# Actuator configuration for monitoring and management endpoints
 management:
   endpoints:
     web:
       exposure:
+        # Includes all available Actuator endpoints (e.g., /actuator/health, /actuator/refresh)
         include: "*"
