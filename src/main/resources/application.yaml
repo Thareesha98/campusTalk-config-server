@@ -12,9 +12,23 @@ spring:
           uri: https://github.com/Thareesha98/config-repo.git
           default-label: main
           clone-on-start: true
+          # Optional: Add credentials for private repositories
+          # username: <Your GitHub Username>
+          # password: <Your Personal Access Token> 
 
+# Enable Actuator endpoints for health checks and refresh functionality
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+# Eureka Registration (Recommended for Microservices)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: false 
+  instance:
+    prefer-ip-address: true
