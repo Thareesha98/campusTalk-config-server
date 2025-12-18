@@ -4,7 +4,6 @@ server:
 
 spring:
   application:
-    # The name used when registering the service, often used by clients
     name: config-server
 
   cloud:
