@@ -17,7 +17,7 @@ spring:
           default-label: develop
           # Set to 'true' to ensure the repository is cloned when the server starts.
           # (Changed from 'false' to 'true' for most straightforward initial setup)
-          clone-on-start: true 
+          clone-on-start: false
 
 # Actuator configuration for monitoring and management endpoints
 management:
