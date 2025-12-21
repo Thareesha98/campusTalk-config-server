@@ -1,28 +1,36 @@
 server:
-  # The port the Config Server will run on
   port: 8888
 
 spring:
   application:
-    # The name used when registering the service, often used by clients
-    name: config-server
-
+    name: sbms-config-server
+  
   cloud:
     config:
       server:
         git:
-          # URL of the Git repository where all configuration files are stored
+          # Using the main branch for stability
           uri: https://github.com/Thareesha98/config-repo.git
-          # The default branch/label to look for configurations
-          default-label: test
-          # Set to 'true' to ensure the repository is cloned when the server starts.
-          # (Changed from 'false' to 'true' for most straightforward initial setup)
-          clone-on-start: true 
+          default-label: main
+          
+          # Forces the server to download the latest config on startup
+          clone-on-start: true
+          
+          # Allows you to put config files in subfolders like 'config/' or 'sbms/'
+          search-paths: '{application}' 
+          
+          # Recommended: Skip SSL validation if using internal git, 
+          # but for GitHub public repos, this isn't strictly needed.
+          strict-host-key-checking: false
 
-# Actuator configuration for monitoring and management endpoints
 management:
   endpoints:
     web:
       exposure:
-        # Includes all available Actuator endpoints (e.g., /actuator/health, /actuator/refresh)
-        include: "*5672"
+
+        # Fixed: "actuator" is the path, "*" or specific names are the inclusions
+        include: "health,info,bus-refresh,refresh"
+  endpoint:
+    health:
+      show-details: always
+
