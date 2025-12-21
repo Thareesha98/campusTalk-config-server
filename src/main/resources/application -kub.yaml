@@ -25,4 +25,4 @@ management:
     web:
       exposure:
         # Includes all available Actuator endpoints (e.g., /actuator/health, /actuator/refresh)
-        include: "*"
+        include: "*5672"
