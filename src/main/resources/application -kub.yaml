@@ -11,7 +11,7 @@ spring:
         git:
           # Using the main branch for stability
           uri: https://github.com/Thareesha98/config-repo.git
-          default-label: main
+          default-label: dev
           
           # Forces the server to download the latest config on startup
           clone-on-start: true
@@ -21,7 +21,7 @@ spring:
           
           # Recommended: Skip SSL validation if using internal git, 
           # but for GitHub public repos, this isn't strictly needed.
-          strict-host-key-checking: false
+          strict-host-key-checking: true
 
 management:
   endpoints:
