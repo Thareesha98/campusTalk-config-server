@@ -11,7 +11,7 @@ spring:
         git:
           # Using the main branch for stability
           uri: https://github.com/Thareesha98/config-repo.git
-          default-label: dev
+          default-label: test
           
           # Forces the server to download the latest config on startup
           clone-on-start: true
