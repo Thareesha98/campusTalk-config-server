@@ -32,5 +32,5 @@ management:
         include: "health,info,bus-refresh,refresh"
   endpoint:
     health:
-      show-details: true
+      show-details: false
 
