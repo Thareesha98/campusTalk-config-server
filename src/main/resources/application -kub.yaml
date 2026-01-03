@@ -21,7 +21,7 @@ spring:
           
           # Recommended: Skip SSL validation if using internal git, 
           # but for GitHub public repos, this isn't strictly needed.
-          strict-host-key-checking: true
+          strict-host-key-checking: false
 
 management:
   endpoints:
